@@ -35,15 +35,19 @@ Filnavn: `OpLaes-0.1.0-aarch64.dmg`
 
 ### macOS Gatekeeper
 
-Appen er ikke code-signed med et Apple Developer-certifikat. macOS vil derfor blokere den ved første start.
+Appen er ikke code-signed med et Apple Developer-certifikat. macOS vil derfor advare ved første start.
 
-**Hvis du ser "OpLæs is damaged and can't be opened"**, kør dette i Terminal efter installation:
+**Metode 1 — Højreklik (nemmest):**
+
+Højreklik (eller Ctrl-klik) på `OpLæs.app` i `Programmer` og vælg **Åbn**. Klik **Åbn** i dialogen. Dette skal kun gøres én gang.
+
+**Metode 2 — Terminal (hvis du ser "is damaged and can't be opened"):**
 
 ```bash
 xattr -cr /Applications/OpLæs.app
 ```
 
-Alternativt kan du fjerne karantæne-flaget fra DMG-filen *før* du mounter:
+Eller fjern karantæne-flaget fra DMG-filen *før* du mounter:
 
 ```bash
 xattr -cr ~/Downloads/OpLaes-0.1.0-aarch64.dmg
