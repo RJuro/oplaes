@@ -39,12 +39,15 @@ trap 'rm -rf "$STAGE_DIR"' EXIT
 
 cp -R "$APP_PATH" "$STAGE_DIR/"
 
-# Strip any ad-hoc signature so the app is cleanly unsigned.
-# A broken/partial signature triggers "is damaged and can't be opened".
-# A cleanly unsigned app triggers "unidentified developer" which users
-# can bypass via Right-click → Open.
+# Re-sign ad-hoc to ensure a clean, intact signature.
+# Tauri's build may produce a stale/broken signature (e.g. linker-signed
+# but bundle resources changed after), which triggers "is damaged".
+# A fresh ad-hoc sign after all modifications produces a valid signature
+# that Apple Silicon can execute and Gatekeeper treats as "unidentified
+# developer" (bypassable via System Settings → Open Anyway).
 APP_NAME="$(basename "$APP_PATH")"
 codesign --remove-signature --deep "$STAGE_DIR/$APP_NAME" 2>/dev/null || true
+codesign --force --deep -s - "$STAGE_DIR/$APP_NAME"
 
 ln -s /Applications "$STAGE_DIR/Applications"
 
