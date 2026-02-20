@@ -5,14 +5,27 @@
 <h1 align="center">OpLæs</h1>
 
 <p align="center">
-  Dansk tekst-til-tale desktop-app bygget med Rust og Tauri.
+  <strong>Dansk tekst-til-tale desktop-app</strong><br>
+  Konvertér PDF, TXT og Markdown til naturlig dansk tale — helt lokalt, ingen cloud.
+</p>
+
+<p align="center">
+  <a href="https://github.com/RJuro/oplaes/releases/latest"><strong>Download seneste version</strong></a>
 </p>
 
 ---
 
+<p align="center">
+  <img src="screenshot-dropzone.png" width="420" alt="OpLæs — træk fil hertil">
+  &nbsp;&nbsp;
+  <img src="screenshot-player.png" width="420" alt="OpLæs — afspilning og eksport">
+</p>
+
 ## Hvad er OpLæs?
 
-OpLæs konverterer tekstfiler til naturlig dansk tale direkte på din Mac. Appen bruger [Plapre TTS](https://syv.ai/viden/plapre)-modellerne fra syv.ai og kører helt lokalt -- ingen cloud-tjeneste, ingen konto.
+OpLæs er en lille macOS-app der læser dine dokumenter op på dansk. Slip en fil ind, vælg en stemme, og få naturlig dansk tale ud — som WAV eller MP3.
+
+Appen bruger [Plapre TTS](https://syv.ai/viden/plapre)-modellerne fra syv.ai og kører 100 % lokalt på din Mac. Ingen cloud-tjeneste, ingen konto, ingen data forlader din maskine.
 
 **Understøttede formater:** PDF, TXT, Markdown
 
@@ -20,11 +33,7 @@ OpLæs konverterer tekstfiler til naturlig dansk tale direkte på din Mac. Appen
 
 ## Download
 
-Hent den nyeste macOS-version fra GitHub Releases:
-
-> [**Seneste release**](https://github.com/RJuro/oplaes/releases/latest)
-
-Filnavn: `OpLaes-0.1.0-aarch64.dmg`
+> [**OpLaes-0.1.0-aarch64.dmg**](https://github.com/RJuro/oplaes/releases/latest) (macOS Apple Silicon)
 
 ## Installation
 
@@ -46,14 +55,12 @@ Appen er ikke code-signed med et Apple Developer-certifikat. macOS vil blokere d
 
 ## Første kørsel
 
-Ved første start downloader OpLæs de nødvendige model-filer fra Hugging Face og gemmer dem lokalt. Du kan vælge mellem to varianter:
+Ved første start downloader OpLæs de nødvendige model-filer (~770 MB) fra Hugging Face og gemmer dem lokalt. Det tager et par minutter afhængigt af din forbindelse.
 
 | Variant | Beskrivelse |
 |---------|-------------|
-| **Q8_0** | Bedste kvalitet, større download |
+| **Q8_0** (standard) | Bedste kvalitet, større download |
 | **Q6_K** | Mindre model, hurtigere load |
-
-Filerne hentes fra [`syvai/plapre-nano`](https://huggingface.co/syvai) og caches i appens data-mappe.
 
 ## Stemmer
 
@@ -65,23 +72,15 @@ Filerne hentes fra [`syvai/plapre-nano`](https://huggingface.co/syvai) og caches
 | Ask | |
 | Kaj | |
 
-## Byg lokalt
+## Teknologi
 
-```bash
-cd app
-npm install
-npm run tauri -- build --bundles app
-cd ..
-./scripts/make_drag_dmg.sh
-```
+OpLæs er bygget med [Rust](https://www.rust-lang.org/) og [Tauri v2](https://v2.tauri.app/). Inferens kører via [llama.cpp](https://github.com/ggml-org/llama.cpp) (GGUF), [ONNX Runtime](https://onnxruntime.ai/) (Kanade decoder + HiFT vocoder), og [Plapre](https://github.com/syv-ai/plapre) modellerne fra syv.ai.
 
 ## Attribution
 
 - **Model:** Plapre / Plapre Nano af [syv.ai](https://syv.ai/viden/plapre)
 - **Model-kilde:** [GitHub](https://github.com/syv-ai/plapre) / [Hugging Face](https://huggingface.co/syvai)
 - **Model-licens:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-
-Se [`ATTRIBUTION.md`](app/src-tauri/ATTRIBUTION.md) for den fulde attribution-tekst.
 
 ## Licens
 
@@ -90,4 +89,4 @@ Se [`ATTRIBUTION.md`](app/src-tauri/ATTRIBUTION.md) for den fulde attribution-te
 
 ## Forfatter
 
-Roman Jurowetzki
+[Roman Jurowetzki](https://github.com/RJuro)
