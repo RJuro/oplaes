@@ -35,19 +35,14 @@ Filnavn: `OpLaes-0.1.0-aarch64.dmg`
 
 ### macOS Gatekeeper
 
-Appen er ikke code-signed med et Apple Developer-certifikat. macOS vil vise *"OpLæs is damaged and can't be opened"* ved første start. Kør denne kommando i Terminal **én gang** efter installation:
+Appen er ikke code-signed med et Apple Developer-certifikat. macOS vil blokere den ved første start med beskeden *"Apple could not verify…"*.
 
-```bash
-xattr -cr /Applications/OpLæs.app
-```
+**Sådan åbner du appen:**
 
-Alternativt kan du fjerne karantæne-flaget fra DMG-filen *før* du mounter:
-
-```bash
-xattr -cr ~/Downloads/OpLaes-0.1.0-aarch64.dmg
-```
-
-Herefter kan appen startes normalt.
+1. Prøv at åbne `OpLæs` — macOS blokerer den. Klik **Done**.
+2. Åbn **Systemindstillinger** → **Anonymitet & sikkerhed** (Privacy & Security).
+3. Scroll ned — der står at OpLæs blev blokeret. Klik **Åbn alligevel** (Open Anyway).
+4. Bekræft med dit kodeord. Herefter starter appen normalt hver gang.
 
 ## Første kørsel
 

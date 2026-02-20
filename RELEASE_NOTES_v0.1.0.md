@@ -22,17 +22,12 @@ Første offentlige macOS-release af OpLæs.
 
 ### macOS Gatekeeper
 
-Appen er ikke code-signed. macOS vil vise *"is damaged and can't be opened"*. Kør i Terminal **én gang** efter installation:
+Appen er ikke code-signed. macOS blokerer den ved første start.
 
-```bash
-xattr -cr /Applications/OpLæs.app
-```
-
-Eller fjern karantæne-flaget fra DMG-filen før montering:
-
-```bash
-xattr -cr ~/Downloads/OpLaes-0.1.0-aarch64.dmg
-```
+1. Prøv at åbne `OpLæs` — klik **Done** i advarslen.
+2. Åbn **Systemindstillinger** → **Anonymitet & sikkerhed**.
+3. Scroll ned og klik **Åbn alligevel** (Open Anyway).
+4. Bekræft med kodeord. Herefter starter appen normalt.
 
 ## Bemærkninger
 
